@@ -15,22 +15,14 @@ public class Part1 {
         int sum = 0;
         int counter = 0;
         for (String line : lines) {
-            //Find the first number
-            char first = 0;
-            char last = 0;
-            for (int i = 0; i < line.length(); i++) {
-                if (Character.isDigit(line.charAt(i))) {
-                    first = line.charAt(i);
-                    break;
-                }
-            }
+            //Suppression des charactères non numeriques
+            var str = "";
 
-            for (int i = line.length()-1; i >= 0; i--) {
-                if (Character.isDigit(line.charAt(i))) {
-                    last = line.charAt(i);
-                    break;
-                }
+            for (Character c : line.toCharArray()) {
+                if (Character.isDigit(c)) str = str + c;
             }
+            int first = Integer.parseInt("" + str.charAt(0));
+            int last = Integer.parseInt("" + str.charAt(str.length() - 1));
             System.out.println(counter);
             val num = Integer.parseInt("" + first + last);
             sum = sum + num;
